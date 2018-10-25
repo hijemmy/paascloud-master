@@ -79,7 +79,7 @@
         <appender-ref ref="MyBatisStatistics" />
     </logger>
     ​
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="console"/>
         <appender-ref ref="logstash"/>
         <appender-ref ref="flatfile"/>
