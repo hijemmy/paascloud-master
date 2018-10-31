@@ -8,6 +8,10 @@
 
     <context id="Mysql" targetRuntime="MyBatis3Simple"
              defaultModelType="flat">
+        <!--指定MBG处理Java文件时所使用的编码-->
+        <property name="javaFileEncoding" value="utf-8"/>
+        <!--指定在生成Mapper.xml时，对DB关键词的处理-->
+        <property name="autoDelimitKeywords" value="true"/>
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
@@ -20,10 +24,17 @@
         </jdbcConnection>
 
         <javaModelGenerator targetPackage="${targetModelPackage}"
-                            targetProject="${targetJavaProject}"/>
+                            targetProject="${targetJavaProject}">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.paascloud.core.mybatis.BaseEntity"/>
+        </javaModelGenerator>
 
         <sqlMapGenerator targetPackage="${targetXMLPackage}"
-                         targetProject="${targetResourcesProject}"/>
+                         targetProject="${targetResourcesProject}">
+            <!--根据不同的db schema生成相应的package-->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
 
         <javaClientGenerator targetPackage="${targetMapperPackage}"
                              targetProject="${targetJavaProject}" type="XMLMAPPER"/>
