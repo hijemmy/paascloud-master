@@ -33,8 +33,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 处理发送中的消息数据.
- *
+ * 处理可靠消息表中发送中的消息数据.
+ * 如果所有消费者都已经消费了消息,则将消息状态置为FINISH
+ *否则,将重新投递消息
  * @author paascloud.net @gmail.com
  */
 @Component
