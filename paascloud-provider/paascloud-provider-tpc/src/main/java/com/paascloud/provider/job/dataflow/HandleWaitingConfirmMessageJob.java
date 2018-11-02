@@ -29,7 +29,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 处理可靠消息表中待生产者确认的消息数据.
+ * 处理可靠消息表中待生产者确认的消息数据,目的在于确保可靠消息服务与上游(生产者)之间的一致性
  *与生产比对待确认消息列表,可靠消息中多出的部分为不需要投递的消息,将其从可靠消息表中删除;
  * 其余的消息予以确认并重新投递
  * @author paascloud.net @gmail.com
